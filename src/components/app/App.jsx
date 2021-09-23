@@ -1,9 +1,8 @@
-const useRecord = (init) => {
-  // TODO: Implement me!!
-};
+import React from 'react';
+import { useRecord } from '../../custom-hooks/useRecord';
 
-function App() {
-  const { current, undo, redo, record } = useRecord('#FF0000');
+export default function App() {
+  const { current, undo, redo, record } = useRecord('#FFw0000');
 
   return (
     <>
@@ -12,7 +11,5 @@ function App() {
       <input type="color" value={current} onChange={({ target }) => record(target.value)} />
       <div style={{ backgroundColor: current, width: '10rem', height: '10rem' }}></div>
     </>
-  )
+  );
 }
-
-export default App;
