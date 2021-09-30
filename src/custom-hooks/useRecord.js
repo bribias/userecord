@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useRecord = (initialColor) => {
+export const useRecord = (initialColor = '#FF0000') => {
   const [current, setCurrent] = useState(initialColor);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [history, setHistory] = useState([]);
