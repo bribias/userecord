@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 export const useRecord = (initialColor) => {
-    const [current, setCurrent] = useState(initialColor);
-    const [history, setHistory] = useState([]);
+  const [current, setCurrent] = useState(initialColor);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [history, setHistory] = useState([]);
 
-    const record = (newColor) => { };
-    const undo = () => { };
-    const redo = () => { };
+  const record = (value) => {
+    const index = currentIndex + 1;
+      const historyArr = history.slice();
+      historyArr.splice(index, 0, value);
+      setCurrentIndex(index);
+      setCurrent(value);
+      setHistory(historyArr);
+  };
+    
+  const undo = () => {};
+  const redo = () => {};
 
-    useEffect(() => {
-        history.push(current);
-    }, []);
+  useEffect(() => {
+    setHistory((prevHistory) => [...prevHistory, current]);
+  }, [current]);
 
-    return { current, undo, redo, record };
+  return { current, undo, redo, record };
 };
