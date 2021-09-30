@@ -22,11 +22,14 @@ export const useRecord = (initialColor) => {
       }
     };
     
-  const redo = () => {};
-
-  useEffect(() => {
-    setHistory((prevHistory) => [...prevHistory, current]);
-  }, [current]);
+    const redo = () => {
+        const historyArr = history.slice();
+        if (currentIndex < (historyArr.length - 1)) {
+            const target = history[currentIndex + 1];
+            setCurrent(target);
+            setCurrentIndex(currentIndex + 1);
+        }
+  };
 
   return { current, undo, redo, record };
 };
