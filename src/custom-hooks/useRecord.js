@@ -14,7 +14,14 @@ export const useRecord = (initialColor) => {
       setHistory(historyArr);
   };
     
-  const undo = () => {};
+    const undo = () => {
+        if (currentIndex > 0) {
+            const target = history[currentIndex - 1];
+            setCurrent(target);
+            setCurrentIndex(currentIndex - 1);
+      }
+    };
+    
   const redo = () => {};
 
   useEffect(() => {
